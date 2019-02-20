@@ -13,3 +13,6 @@
 
 Route::get('/user', 'UserController@index');
 Route::get('/uid/{id}', 'UserController@show');
+
+Route::get('/bbs', 'BbsController@index');
+Route::post('/bbs', 'BbsController@create');
