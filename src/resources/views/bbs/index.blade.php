@@ -6,6 +6,7 @@
 </head>
 <body>
   <h1>掲示板</h1>
+
   <!-- エラーメッセージエリア -->
   @if ($errors->any())
     <h2>エラーメッセージ</h2>
@@ -16,23 +17,25 @@
     </ul>
   @endif
 
-  <!-- 直前投稿エリア -->
-  @isset($name, $comment, $color)
-    <h2>直前の投稿</h2>
+  <!-- 投稿表示エリア -->
+  @isset($bbs)
+  @foreach ($bbs as $d)
     <?php
-      $name = htmlspecialchars($name);
+      $name = htmlspecialchars($d->name);
       echo '名前:<strong>'.$name.'</strong>';
-      if ($mail != '') {
-        $mail = htmlspecialchars($mail);
+      if ($d->mail != null) {
+        $mail = htmlspecialchars($d->mail);
         echo '['.$mail.']';
       }
       echo ' '.date('Y/m/d H:i:s');
       $com_colors = ["black", "red", "blue", "green"];
-      $comment = htmlspecialchars($comment);
-      echo "<p style=\"color:".$com_colors[$color].";\">".nl2br($comment)."</p>";
+      $comment = htmlspecialchars($d->comment);
+      echo "<p style=\"color:".$com_colors[$d->color].";\">".nl2br($comment)."</p>";
     ?>
-    <br><hr>
+    <br>
+  @endforeach
   @endisset
+
   <!-- フォームエリア -->
   <h2>フォーム</h2>
   <form action="/bbs" method="POST">
