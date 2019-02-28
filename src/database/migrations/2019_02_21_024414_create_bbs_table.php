@@ -19,6 +19,7 @@ class CreateBbsTable extends Migration
             $table->string('mail')->nullable();
             $table->string('comment');
             $table->integer('color');
+            $table->string('posted_at');
             $table->timestamps();
         });
     }

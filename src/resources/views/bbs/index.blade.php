@@ -22,12 +22,12 @@
   @foreach ($bbs as $d)
     <?php
       $name = htmlspecialchars($d->name);
-      echo '名前:<strong>'.$name.'</strong>';
+      echo $d->id.' 名前:<strong>'.$name.'</strong>';
       if ($d->mail != null) {
         $mail = htmlspecialchars($d->mail);
         echo '['.$mail.']';
       }
-      echo ' '.date('Y/m/d H:i:s');
+      echo ' '.$d->posted_at;
       $com_colors = ["black", "red", "blue", "green"];
       $comment = htmlspecialchars($d->comment);
       echo "<p style=\"color:".$com_colors[$d->color].";\">".nl2br($comment)."</p>";

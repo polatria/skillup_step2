@@ -29,11 +29,15 @@ class BbsController extends Controller
     $comment = $request->input('comment');
     $color = $request->input('color');
 
+    $week = array( "日", "月", "火", "水", "木", "金", "土" );
+    $posted_at = date('Y/m/d(').$week[date("w")].date(') H:i:s');
+
     Bbs::insert([
       "name" => $name,
       "mail" => $mail,
       "comment" => $comment,
       "color" => $color,
+      "posted_at" => $posted_at,
     ]);
 
     $bbs = Bbs::all();
