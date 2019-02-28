@@ -24,3 +24,6 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('/gituser', 'User\GitUserController@index');
 Route::post('/gituser', 'User\GitUserController@updateUser');
+
+Route::get('/', 'HomeController@index');
+Route::post('/upload', 'HomeController@upload');
