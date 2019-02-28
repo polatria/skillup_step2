@@ -5,16 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Bbs;
 
-class BbsController extends Controller {
+class BbsController extends Controller
+{
   // Indexページの表示
-  public function index() {
+  public function index()
+  {
     $bbs = Bbs::all(); // 全データを取りだす
     return view('bbs.index', ["bbs" => $bbs]);
   }
 
   // 変数をビューへ渡す
-  public function create(Request $request) {
-
+  public function create(Request $request)
+  {
     // バリデーションチェック
     $request->validate([
       'name' => 'required|max:10',
